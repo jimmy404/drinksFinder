@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 
-import { ContextCategories } from './context/ContextCategory';
-import { ContextRecipes, setConsult } from './context/ContextRecipes';
+import { ContextCategories } from '../context/ContextCategory';
+import { ContextRecipes, setConsult } from '../context/ContextRecipes';
 
 const Form = () => {
 
