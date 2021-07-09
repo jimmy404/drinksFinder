@@ -20,11 +20,23 @@ function getModalStyle() {
 const useStyles = makeStyles(theme => ({
   paper: {
     position: 'absolute',
-    width: 400,
+    width: 450,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-  },
+    overflow: 'scroll',
+    height: '100%',
+    maxHeight: 500,
+    display: 'block'
+    },
+  header: {
+    padding: '12px 0',
+    borderBottom: '1px solid darkgrey'
+    },
+  content: {
+    padding: "12px 0",
+    overflow: 'scroll'
+    }
 }));
 
 const Recipe = ({recipe}) => {
@@ -44,6 +56,18 @@ const Recipe = ({recipe}) => {
   };
 
   const { recipe: infoRecipe, saveIdRecipe, setRecipe } = useContext(ContextModal);
+
+  const showIngredients = (infoRecipe) => {
+    let ingredients = [];
+    for( let i = 1; i < 16; i++ ){
+      if( infoRecipe[`strIngredient${i}` ]){
+        ingredients.push(
+          <li>{ infoRecipe[`strIngredient${i}`] }{ infoRecipe[`strMeasure${i}`] }</li>
+        )
+      }
+    }
+    return ingredients;
+  }
 
   return (
     <div className="col-md-4 mb-3">
@@ -78,6 +102,10 @@ const Recipe = ({recipe}) => {
               <h3 className="mt-4">Instructions</h3>
               <p>{infoRecipe.strInstructions}</p>
               <img className="img-fluid my-4" alt="Visual information abour recipe" src={infoRecipe.strDrinkThumb} />
+              <h3>Ingredients and quantities</h3>
+              <ul>
+                { showIngredients(infoRecipe) }
+              </ul>
             </div>
           </Modal>
         </div>
