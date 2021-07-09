@@ -4,8 +4,8 @@ import { ContextCategories } from './context/ContextCategory';
 
 const Form = () => {
 
-  const { state } = useContext(ContextCategories);
-  console.log('Test', state);
+  const { categories } = useContext(ContextCategories);
+  console.log('Test - Form: ', categories);
   return (
     <form className="col-12">
       <fieldset className="text-center">
