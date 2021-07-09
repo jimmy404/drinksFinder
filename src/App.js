@@ -4,16 +4,19 @@ import Form from './components/Form';
 import Header from './components/Header';
 
 import ProviderCategories from './components/context/ContextCategory';
+import ProviderRecipes from './components/context/ContextRecipes';
 
 function App() {
   return (
     <ProviderCategories>
-      <Header />
-      <div className="container mt-5">
-        <div className="row">
-          <Form />
+      <ProviderRecipes>
+        <Header />
+        <div className="container mt-5">
+          <div className="row">
+            <Form />
+          </div>
         </div>
-      </div>
+      </ProviderRecipes>
     </ProviderCategories>
   );
 }
