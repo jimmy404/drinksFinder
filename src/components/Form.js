@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 
-import { ContextCategories } from './context/ContextCategory';
-import { ContextRecipes } from './context/ContextRecipes';
+import { ContextCategories } from '../context/ContextCategory';
+import { ContextRecipes, setConsult } from '../context/ContextRecipes';
 
 const Form = () => {
 
@@ -11,7 +11,7 @@ const Form = () => {
   });
 
   const { categories } = useContext(ContextCategories);
-  const { searchRecipes } = useContext(ContextRecipes);
+  const { searchRecipes, saveConsult } = useContext(ContextRecipes);
 
   const getRecipeData = e => {
     setSearch({
@@ -26,6 +26,7 @@ const Form = () => {
       onSubmit={e => {
         e.preventDefault();
         searchRecipes(search);
+        saveConsult(true);
       }}
     >
       <fieldset className="text-center">
